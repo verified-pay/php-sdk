@@ -2,6 +2,7 @@
 namespace Vpay\VerifiedPay;
 require_once VPAY__PLUGIN_DIR . 'src/gateway/PaymentConfig.php';
 require_once VPAY__PLUGIN_DIR . 'src/gateway/PaymentParams.php';
+require_once VPAY__PLUGIN_DIR . 'classes/gateway/PaymentResponse.php';
 require_once VPAY__PLUGIN_DIR . 'src/gateway/functions.php';
 
 class VerifiedPayGateway {
@@ -134,7 +135,7 @@ class VerifiedPayGateway {
 	 * Returns the payment with Associated ID (Post/Order ID). It returns null if no such payment exists.
 	 * For a list of properties see: https://verified-pay.com/pub/docs/#get-a-single-payment
 	 * @param int|string $txID
-	 * @return object
+	 * @return PaymentResponse|null
 	 */
 	public function getPayment($txID) {
 		$checkUrl = sprintf("%s/api/v1/get-payment/%s", static::API_ENDPOINT, $txID);
@@ -152,7 +153,7 @@ class VerifiedPayGateway {
 			return null;
 		}
 		
-		return $json->data;
+		return PaymentResponse::fromJson($json->data);
 	}
 
 	/**
