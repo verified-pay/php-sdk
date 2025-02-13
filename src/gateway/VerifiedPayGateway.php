@@ -2,7 +2,7 @@
 namespace Vpay\VerifiedPay;
 require_once VPAY__PLUGIN_DIR . 'src/gateway/PaymentConfig.php';
 require_once VPAY__PLUGIN_DIR . 'src/gateway/PaymentParams.php';
-require_once VPAY__PLUGIN_DIR . 'classes/gateway/PaymentResponse.php';
+require_once VPAY__PLUGIN_DIR . 'src/gateway/PaymentResponse.php';
 require_once VPAY__PLUGIN_DIR . 'src/gateway/functions.php';
 
 class VerifiedPayGateway {
